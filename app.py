@@ -12,7 +12,8 @@ db.init_app(app)
 
 api = Api(app)
 
-#Define the homepage.
+
+
 @app.route('/')
 def home():
     return make_response("""
@@ -21,13 +22,15 @@ def home():
     """, 200)
 
 class Episodes(Resource):
-    #retrive all episodes in the database and return them as a json response.
+    
+    
     def get(self):
         episodes = [episode.to_dict() for episode in Episode.query.all()]
         return make_response(jsonify(episodes), 200)
 
 class EpisodeById(Resource):
-    #retrieve a specific episode by id from the database and return it as a json response.
+    
+    
     def get(self, id):
         episode = Episode.query.get(id)
         if episode:
@@ -38,13 +41,15 @@ class EpisodeById(Resource):
             return make_response(jsonify({"error": "Episode not found"}), 404)
 
 class Guests(Resource):
-    #retrive all guests in the database and return them as a json response.
+    
+    
     def get(self):
         guests = [guest.to_dict() for guest in Guest.query.all()]
         return make_response(jsonify(guests), 200)
 
 class Appearances(Resource):
-    #add a new appearance to the database and return the new appearance as a json response.
+    
+    
     def post(self):
         try:
             data = request.get_json()
@@ -59,7 +64,8 @@ class Appearances(Resource):
         except Exception as e:
             return make_response(jsonify({"errors": [str(e)]}), 400)
 
-#define the endpoints and their corresponding resources.
+
+
 api.add_resource(Episodes, '/episodes' )
 api.add_resource(EpisodeById, '/episodes/<int:id>')
 api.add_resource(Guests, '/guests')
