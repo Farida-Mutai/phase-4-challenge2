@@ -9,7 +9,7 @@ class Episode(db.Model):
     title = db.Column(db.String, nullable=False)
     air_date = db.Column(db.Date, nullable=False)
     
-    # Relationship with Appearance
+    
     appearances = db.relationship('Appearance', backref='episode', lazy=True)
 
     def to_dict(self):
@@ -27,7 +27,8 @@ class Guest(db.Model):
     name = db.Column(db.String, nullable=False)
     profession = db.Column(db.String, nullable=False)
     
-    # Relationship with Appearance
+    
+    
     appearances = db.relationship('Appearance', backref='guest', lazy=True)
 
     def to_dict(self):
