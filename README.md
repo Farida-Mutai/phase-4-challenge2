@@ -40,3 +40,19 @@ The models for this API are structured as follows:
 **Guest: Represents a guest who appears on various episodes.
 **Appearance: Represents the relationship between an episode and a guest, including the rating of the guest's appearance on the episode.
 
+
+###Relationships
+An Episode has many Guests through Appearance.
+A Guest has many Episodes through Appearance.
+An Appearance belongs to both an Episode and a Guest.
+
+
+###Validations
+Appearance Model
+
+rating: Must be between 1 and 5 (inclusive). If the rating is outside this range, the request to create a new appearance will fail with validation errors.
+
+###contacts
+Incase of any issue,compliment on where i can improve reach me out on my email address farida.mutai@student.moringaschool.com
+You can pull your changes in my github reachable repository https://github.com/Farida-Mutai/phase-4-challenge2
+
