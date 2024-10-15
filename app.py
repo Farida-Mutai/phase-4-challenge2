@@ -1,7 +1,7 @@
 from flask import Flask, request, make_response, jsonify
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
-from models import db, Episode, Guest, Appearance
+from model import db, Episode, Guest, Appearance
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lateshow.db'
