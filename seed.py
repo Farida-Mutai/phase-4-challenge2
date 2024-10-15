@@ -5,13 +5,15 @@ from datetime import datetime
 def seed_database():
     with app.app_context():
         
-        # Clear existing data
+        
+        
         db.session.query(Appearance).delete()
         db.session.query(Guest).delete()
         db.session.query(Episode).delete()
         db.session.commit()
 
-        # Create sample episode data
+        
+        
         episodes_data = [
             {"title": "Episode 1", "air_date": "2023-01-01"},
             {"title": "Episode 2", "air_date": "2023-01-02"},
@@ -28,7 +30,8 @@ def seed_database():
             {"name": "Charlie Davis", "profession": "Director"}
         ]
 
-        # Add episodes to the database
+        
+        
         episodes = []
         for episode_info in episodes_data:
             episode = Episode(
@@ -38,22 +41,21 @@ def seed_database():
             db.session.add(episode)
             episodes.append(episode)
         
-        db.session.commit()  # Commit to get the IDs of the episodes
-
-        # Add guests to the database
+        db.session.commit()  
+        
         guests = []
         for guest_info in guests_data:
             guest = Guest(name=guest_info['name'], profession=guest_info['profession'])
             db.session.add(guest)
             guests.append(guest)
 
-        db.session.commit()  # Commit to get the IDs of the guests
-
-        # Add appearances to the database
+        db.session.commit()  
+        
         for i, guest in enumerate(guests):
             for episode in episodes:
                 appearance = Appearance(
-                    rating=round(2.5 + i * 0.5, 1),  # Just a random rating for the appearance
+                    rating=round(2.5 + i * 0.5, 1),  
+                    
                     episode_id=episode.id,
                     guest_id=guest.id
                 )
